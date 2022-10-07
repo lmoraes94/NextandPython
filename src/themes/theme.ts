@@ -19,13 +19,13 @@ const theme = createTheme({
         root: {
           color: "#FFF",
           borderRadius: "0",
-          backgroundColor: "#F52273",
+          backgroundColor: "#F5227F",
           textTransform: "none",
           fontWeight: "bold",
           paddingTop: "12px",
           paddingBottom: "12px",
           ":hover": {
-            backgroundColor: "#F52273",
+            backgroundColor: "#F86273",
           },
         },
       },
