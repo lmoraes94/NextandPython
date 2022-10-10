@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { Professionals } from "../../@types/Professionals";
 import {
   Description,
   Info,
@@ -9,21 +10,35 @@ import {
   Value,
 } from "./List.style";
 
-const List = () => {
+interface ListProps {
+  professionals: Professionals[];
+}
+
+const List = (props: ListProps) => {
   return (
-    <>
-      <ListStyle>
-        <ItemList>
-          <Photo src="https://github.com/lmoraes94.png"></Photo>
-          <Info>
-            <Name>Leonardo</Name>
-            <Value>R$100,00/Hora</Value>
-            <Description>Desenvolvedor Jr</Description>
-            <Button>Contratar</Button>
-          </Info>
-        </ItemList>
-      </ListStyle>
-    </>
+    <div>
+      {props.professionals.length === 0 ? (
+        "NÃO HÁ PROFISSIONAIS CADASTRADOS"
+      ) : (
+        <>
+          <ListStyle>
+            {props.professionals.map((teacher) => (
+              <ItemList key={teacher.id}>
+                <Photo src={teacher.photo}></Photo>
+                <Info>
+                  <Name>{teacher.name}</Name>
+                  <Value>R${teacher.value_hour}</Value>
+                  <Description>{teacher.description}</Description>
+                  <Button sx={{ width: "70%" }}>
+                    Contratar {teacher.name}
+                  </Button>
+                </Info>
+              </ItemList>
+            ))}
+          </ListStyle>
+        </>
+      )}
+    </div>
   );
 };
 
